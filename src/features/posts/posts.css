@@ -1,16 +1,19 @@
 .posts {
-    margin: 1em 8.7em 2.5em;
     font-size: 15px;
+    
 }
 
-.post {
-    background-color: white;
-    padding: 0.5em 1em;
-    border-radius: 5px;
-    box-shadow: -1px 0px 5px 5px #f4f5fa;
+.banner {
     margin: 15px 0;
     display: flex;
     align-items: center;
+    padding: 5px;
+}
+
+.post {
+    box-shadow: -1px 0px 5px 5px #f4f5fa;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .votes {
@@ -19,11 +22,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 5px;
 }
 
 .votes > i,
 .comments > i{
     color: #898ea2;
+}
+
+.redditImage{
+    padding: 0 5px;
+    display: flex;
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
 }
 
 .sub,
@@ -32,7 +44,18 @@
 }
 
 .content {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.content h2 {
     padding: 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 0;
+    padding:10px 0;
+    
 }
 
 .posts h1 {
@@ -41,6 +64,13 @@
     font-size: 25px;
 }
 
-.post span {
+.posts span {
     font-weight: bold;
+}
+
+.donotshow {
+    display:none;
+}
+
+.expanded{
 }

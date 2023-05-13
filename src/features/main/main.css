@@ -1,5 +1,6 @@
 .main {
     flex: 1;
     background-color: #f4f5fa;
-    padding: 20px 150px;
+    padding: 20px;
+    width: 100%;
 }

@@ -29,6 +29,9 @@ const feedSlice =  createSlice({
         },
         setFilter(state, action) {
             state.filter = action.payload
+        },
+        changeHidden(state, action) {
+            state.feed[action.payload] = !state.feed[action.payload];
         }
     },
     extraReducers: (builder) => {
@@ -48,5 +51,5 @@ const feedSlice =  createSlice({
     }
 })
 
-export const { setSelectedSubreddit, setFilter } = feedSlice.actions;
+export const { setSelectedSubreddit, setFilter, changeHidden } = feedSlice.actions;
 export default feedSlice.reducer;

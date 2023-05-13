@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     justify-content: space-between;
-    margin: 1em 10em 2.5em;
+    margin: 1em 0 2em ;
 }
 
 .header a {
@@ -32,5 +32,5 @@
 }
 
 .header-content li{
-    padding: 15px;
+    padding-right: 15px;
 }
