@@ -1,0 +1,53 @@
+.sidenav {
+    width: 200px;
+    font-size: small;
+    box-shadow: 2px 0px 1px 1px #f4f5fa;
+}
+
+.sidenav-logo {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidenav-logo > img {
+    width: 60%;
+    margin: 10px 0px;
+}
+
+.sidenav-search {
+    margin: 2em 0.5rem;
+}
+
+.sidenav-search > input {
+    padding: 8px 10px;
+    border: 1px solid #f4f5fa;
+    box-shadow: 0px 1px 0px 1px #f4f5fa;
+    border-radius: 50px;
+    position: relative;
+    outline-width: 0;
+}
+.sidenav-search > i {
+    position: absolute;
+    left: 170px;
+    top: 175px; 
+}
+
+.sidenav a {
+    text-decoration: none;
+    color: #808088;
+    cursor:pointer;
+}
+
+.sidenav a:hover {
+    color: #FF5700;
+}
+
+.sidenav li {
+    padding: 10px 25px;
+}
+
+.sidenav hr {
+    margin: 2em 0;
+    border: 1px solid #f4f5fa
+}

@@ -1,0 +1,36 @@
+.header {
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    margin: 1em 10em 2.5em;
+}
+
+.header a {
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.header a:hover {
+    color: #FF5700;
+}
+
+.highlight {
+    color: #FF5700;
+    border-bottom: #FF5700 solid 1px;
+}
+
+.noHighlight {
+    color: #808080;
+}
+
+.header-content ul{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.header-content li{
+    padding: 15px;
+}
