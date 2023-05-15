@@ -16,6 +16,7 @@ const initialState = {
     feed: [],
     selectedSubreddit: "popular",
     filter: "hot",
+    activeArray: [],
     isLoading: false,
     error: false,
 }
@@ -30,9 +31,14 @@ const feedSlice =  createSlice({
         setFilter(state, action) {
             state.filter = action.payload
         },
+        resetArray(state) {
+            for (let i = 0; i< state.feed.length; i++) {
+                state.activeArray[i] = false;
+            }
+        },
         changeHidden(state, action) {
-            state.feed[action.payload] = !state.feed[action.payload];
-        }
+            state.activeArray[action.payload] = !state.activeArray[action.payload];
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchFeed.pending, (state) => {
@@ -41,6 +47,11 @@ const feedSlice =  createSlice({
         })
         builder.addCase(fetchFeed.fulfilled, (state, action) => {
             state.feed = action.payload;
+            const newArr = [];
+            for (let i = 0; i < action.payload.length; i++) {
+                newArr.push(false);
+            }
+            state.activeArray = newArr;
             state.isLoading = false;
             state.error = false;
         })
@@ -51,5 +62,5 @@ const feedSlice =  createSlice({
     }
 })
 
-export const { setSelectedSubreddit, setFilter, changeHidden } = feedSlice.actions;
+export const { setSelectedSubreddit, setFilter, changeHidden, resetArray } = feedSlice.actions;
 export default feedSlice.reducer;
