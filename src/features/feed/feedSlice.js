@@ -11,14 +11,27 @@ export const fetchFeed = createAsyncThunk(
     }
 )
 
+export const fetchComments = createAsyncThunk(
+    'feed/fetchComments',
+    async (permalink) => {
+        const res = await fetch(`https://www.reddit.com${permalink}.json`)
+        const json = await res.json()
+        return json[1].data.children.map(comments => comments.data)
+    }
+)
+
 
 const initialState = {
     feed: [],
+    comments: [],
     selectedSubreddit: "popular",
+    selectedPost: "",
     filter: "hot",
     activeArray: [],
     isLoading: false,
     error: false,
+    commentsIsLoading: false,
+    commentsIsError: false
 }
 
 const feedSlice =  createSlice({
@@ -39,6 +52,9 @@ const feedSlice =  createSlice({
         changeHidden(state, action) {
             state.activeArray[action.payload] = !state.activeArray[action.payload];
         },
+        changeSelectedPost(state, action) {
+            state.selectedPost = action.payload.slice(0, -1);
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchFeed.pending, (state) => {
@@ -59,8 +75,21 @@ const feedSlice =  createSlice({
             state.isLoading = false;
             state.error = true;
         })
+        builder.addCase(fetchComments.pending, (state) =>{
+            state.commentsIsLoading = true;
+            state.commentsIsError = false;
+        })
+        builder.addCase(fetchComments.fulfilled, (state, action) => {
+            state.comments = action.payload;
+            state.commentsIsLoading = false;
+            state.commentsIsError = false;
+        })
+        builder.addCase(fetchComments.rejected, (state) => {
+            state.commentsIsLoading = false;
+            state.commentsIsError = true;
+        })
     }
 })
 
-export const { setSelectedSubreddit, setFilter, changeHidden, resetArray } = feedSlice.actions;
+export const { setSelectedSubreddit, setFilter, changeHidden, resetArray, changeSelectedPost } = feedSlice.actions;
 export default feedSlice.reducer;

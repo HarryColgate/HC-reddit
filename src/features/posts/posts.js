@@ -1,25 +1,32 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './posts.css'
-import { fetchFeed } from "../feed/feedSlice";
-import { changeHidden, resetArray } from '../feed/feedSlice'
+import { changeSelectedPost, fetchFeed } from "../feed/feedSlice";
+import { changeHidden, resetArray, fetchComments } from '../feed/feedSlice'
 import Loading from "../loading/loading";
 import Failed from "../failed/failed";
+import Comments from "../comments/comments";
 
 export default function Posts() {
 
     const dispatch = useDispatch();
     const feed = useSelector((state) => state.feed);
-    const { selectedSubreddit, filter, isLoading, error, activeArray } = feed;
+    const { selectedSubreddit, filter, isLoading, error, activeArray, selectedPost, comments, commentsIsLoading} = feed;
 
     useEffect(() => {
         dispatch(fetchFeed({selectedSubreddit, filter}))
     }, [selectedSubreddit, filter]);
 
-    const expandPost = (postNum) => {
+    useEffect(() => {
+        dispatch(fetchComments(selectedPost))
+    }, [selectedPost]);
+
+    const expandPost = (postNum, commentLink) => {
         if (activeArray[postNum]) {
             dispatch(resetArray());
+            dispatch(changeSelectedPost(""));
         } else {
+            dispatch(changeSelectedPost(commentLink));
             dispatch(resetArray());
             dispatch(changeHidden(postNum));
         }
@@ -45,7 +52,8 @@ export default function Posts() {
                 {/* goes through the feed array to make each post */}
                 {feed.feed.map((post, index) => (
                     <div className="post">
-                        <div className="banner" onClick={() => expandPost(index)}>
+                        {/*adjusts what post is being viewed and adjusting what comments are loaded*/}
+                        <div className="banner" onClick={() => expandPost(index, post.permalink)}>
                             <div className="votes">
                                 <i className="fas fa-caret-up"></i>
                                     <span>{post.score}</span>
@@ -69,8 +77,8 @@ export default function Posts() {
                                 {post.post_hint === 'image' ? <img className="expandedImage expandedMedia" src={post.url}/> : null}
                             </div>
                             {/*using object value in system called hidden that is always default false*/}
-                            <div className={true ? "expandedComments" : "donotshow"}>
-                            
+                            <div className="expandedComments">
+                                <Comments />
                             </div>
                         </div>
                     </div>
