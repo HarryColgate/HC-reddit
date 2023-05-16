@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  currentSub: "Popular",
+  currentSub: "pics",
   sortBy: "Hot",
   menulist: [
-    {name: "pics"},
+    {name: "popular"},
     {name: "all"},
   ],
   subredditlist: [
