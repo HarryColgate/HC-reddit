@@ -42,11 +42,8 @@ export default function Sidenav() {
                 <ul>
                     {/*uses the setSelectedSubreddit from feedSlice to change the current Subreddit*/}
                     {menu.map(obj => (
-                        <li>
-                            <a 
-                            onClick={() => handleClick(obj.name)}>
+                        <li onClick={() => handleClick(obj.name)}>
                                 {obj.name}
-                            </a>
                         </li>
                     ))}
                 </ul>
@@ -54,11 +51,8 @@ export default function Sidenav() {
                 <ul>
                     {/*uses the setSelectedSubreddit from feedSlice to change the current Subreddit*/}
                     {subreddits.map(obj => (
-                        <li>
-                            <a 
-                            onClick={() => handleClick(obj.name)}>
-                                {obj.name}
-                            </a>    
+                        <li onClick={() => handleClick(obj.name)}>
+                                {obj.name} 
                         </li>
                     ))}
                 </ul>

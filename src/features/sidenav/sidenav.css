@@ -40,18 +40,14 @@ i:hover {
     cursor: pointer;
 }
 
-.sidenav a {
-    text-decoration: none;
-    color: #808088;
-    cursor:pointer;
-}
-
-.sidenav a:hover {
+.sidenav li:hover {
     color: #FF5700;
 }
 
 .sidenav li {
     padding: 10px 25px;
+    color: #808088;
+    cursor:pointer;
 }
 
 .sidenav hr {
