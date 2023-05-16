@@ -8,16 +8,16 @@ const initialState = {
     {name: "all"},
   ],
   subredditlist: [
-    {name: "eyebleach"},
-    {name: "perfectloops"},
+    {name: "pics"},
+    {name: "oldschoolcool"},
     {name: "blessedimages"},
-    {name: "worldnews"},
+    {name: "catsstandingup"},
     {name: "casualuk"},
-    {name: "explainlikeimfive"},
-    {name: "gifs"},
-    {name: "ama"},
-    {name: "shittyfoodporn"},
-    {name: "askreddit"},
+    {name: "wallpapers"},
+    {name: "art"},
+    {name: "trebuchetmemes"},
+    {name: "comedyheaven"},
+    {name: "cozyplaces"}
   ]
 };
 

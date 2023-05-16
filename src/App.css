@@ -31,6 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
     font-family: 'Nunito Sans', sans-serif;
+	background-color: #f4f5fa;
 }
 ol, ul {
 	list-style: none;
@@ -50,4 +51,14 @@ table {
 
 .container {
 	display: flex;
+}
+
+p {
+	overflow-wrap: break-word;
+}
+
+@media (max-width: 800px){
+	.container {
+		flex-direction: column;
+	}
 }

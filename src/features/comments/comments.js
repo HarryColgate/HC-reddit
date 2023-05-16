@@ -34,7 +34,7 @@ export default function Comments() {
                     <div className="commentInfo">
                         <li>
                             <p className="author">u/{comment.author}</p>
-                            <p>{comment.body}</p>
+                            <p className="commentBody">{comment.body}</p>
                         </li>
                     </div>
                 </div>

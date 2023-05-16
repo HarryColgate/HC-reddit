@@ -4,7 +4,7 @@ import React from 'react';
 export default function Failed() {
     return(
         <div className="failed">
-            failed
+            Content not found!
         </div>
     )
 }

@@ -4,7 +4,7 @@ import {
     selectSubreddits, 
     selectMenu,
 } from '../subreddits/subredditsSlice';
-import { setSelectedSubreddit, setFilter } from '../feed/feedSlice'
+import { setSelectedSubreddit, setFilter, setSearchTerm } from '../feed/feedSlice'
 import './sidenav.css';
 
 export default function Sidenav() {
@@ -12,9 +12,21 @@ export default function Sidenav() {
     const menu = useSelector(selectMenu);
     const subreddits = useSelector(selectSubreddits);
     const dispatch = useDispatch();
+    const feed = useSelector((state) => state.feed);
+    const { searchTerm } = feed;
+
+
     const handleClick = (subName) => {
         dispatch(setSelectedSubreddit(subName))
         dispatch(setFilter("hot"))
+    }
+
+    const handleChange = (e) => {
+        dispatch(setSearchTerm(e.target.value));
+    }
+
+    const setClick = () => {
+        dispatch(setSelectedSubreddit(searchTerm));
     }
 
     return(
@@ -23,8 +35,8 @@ export default function Sidenav() {
                 <img src="https://www.redditinc.com/assets/images/site/reddit-logo.png" />
             </div>
             <div className='sidenav-search' >
-                <input type="text" name="search" placeholder="Search" />
-                <i className='fas fa-search'></i>
+                <input type="text" name="search" placeholder="Search subreddits" onChange={handleChange} />
+                <i className='fas fa-search' onClick={() => setClick()}></i>
             </div>
             <div className='sidenav-link'>
                 <ul>

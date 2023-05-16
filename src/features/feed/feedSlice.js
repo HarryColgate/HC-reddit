@@ -20,13 +20,13 @@ export const fetchComments = createAsyncThunk(
     }
 )
 
-
 const initialState = {
     feed: [],
     comments: [],
     selectedSubreddit: "popular",
     selectedPost: "",
     filter: "hot",
+    searchTerm: "",
     activeArray: [],
     isLoading: false,
     error: false,
@@ -54,7 +54,10 @@ const feedSlice =  createSlice({
         },
         changeSelectedPost(state, action) {
             state.selectedPost = action.payload.slice(0, -1);
-        }
+        },
+        setSearchTerm(state, action) {
+            state.searchTerm = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchFeed.pending, (state) => {
@@ -91,5 +94,5 @@ const feedSlice =  createSlice({
     }
 })
 
-export const { setSelectedSubreddit, setFilter, changeHidden, resetArray, changeSelectedPost } = feedSlice.actions;
+export const { setSearchTerm, setSelectedSubreddit, setFilter, changeHidden, resetArray, changeSelectedPost } = feedSlice.actions;
 export default feedSlice.reducer;

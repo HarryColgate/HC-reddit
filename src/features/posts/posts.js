@@ -11,7 +11,7 @@ export default function Posts() {
 
     const dispatch = useDispatch();
     const feed = useSelector((state) => state.feed);
-    const { selectedSubreddit, filter, isLoading, error, activeArray, selectedPost, comments, commentsIsLoading} = feed;
+    const { selectedSubreddit, filter, isLoading, error, activeArray, selectedPost, comments} = feed;
 
     useEffect(() => {
         dispatch(fetchFeed({selectedSubreddit, filter}))
@@ -45,6 +45,12 @@ export default function Posts() {
         )
     }
 
+    if (feed.length < 1) {
+        return(
+            <Failed />
+        )
+    }
+
     else {
         return(
             <div className="posts">
@@ -53,7 +59,7 @@ export default function Posts() {
                 {feed.feed.map((post, index) => (
                     <div className="post">
                         {/*adjusts what post is being viewed and adjusting what comments are loaded*/}
-                        <div className="banner" onClick={() => expandPost(index, post.permalink)}>
+                        <div className="banner" onClick={() => expandPost(index, post.permalink)} style={activeArray[index] ? {backgroundColor: "#FF7222"} : null}>
                             <div className="votes">
                                 <i className="fas fa-caret-up"></i>
                                     <span>{post.score}</span>
@@ -68,16 +74,19 @@ export default function Posts() {
                                 <h2>{post.title}</h2>
                                 <div className="comments">
                                     <i className="fas fa-comment"></i>
-                                    {post.num_comments}
+                                    <p>{post.num_comments}</p>
                                 </div>
                             </div>
                         </div>
                         <div className={ activeArray[index] ? "expanded" : "donotshow"}>
+                            <div className="selftext">
+                                <p>{post.selftext}</p>
+                            </div>
                             <div className={post.post_hint === 'image' || post.post_hint === 'video' ? "expandedMediaContainer" : "donotshow"}>
                                 {post.post_hint === 'image' ? <img className="expandedImage expandedMedia" src={post.url}/> : null}
                             </div>
                             {/*using object value in system called hidden that is always default false*/}
-                            <div className="expandedComments">
+                            <div className="expandedComments" style={comments.length < 1 ? {display: "none"} : null}>
                                 <Comments />
                             </div>
                         </div>
