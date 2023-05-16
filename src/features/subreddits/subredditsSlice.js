@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  currentSub: "pics",
-  sortBy: "Hot",
   menulist: [
     {name: "popular"},
     {name: "all"},

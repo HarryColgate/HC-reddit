@@ -23,7 +23,7 @@ export const fetchComments = createAsyncThunk(
 const initialState = {
     feed: [],
     comments: [],
-    selectedSubreddit: "popular",
+    selectedSubreddit: "pics",
     selectedPost: "",
     filter: "hot",
     searchTerm: "",
