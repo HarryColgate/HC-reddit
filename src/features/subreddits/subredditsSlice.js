@@ -4,7 +4,7 @@ const initialState = {
   currentSub: "Popular",
   sortBy: "Hot",
   menulist: [
-    {name: "popular"},
+    {name: "pics"},
     {name: "all"},
   ],
   subredditlist: [
