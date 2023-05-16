@@ -18,9 +18,9 @@ export default function Header() {
             <div className='header-content'>
                 <ul>
                     {/*uses the set filter from feedSlice to change the current filter*/}
-                    <li><a className={activeFilter === 'hot' ? 'highlight' : 'noHighlight'} onClick={() => handleClick('hot')}>Hot</a></li>
-                    <li><a className={activeFilter === 'new' ? 'highlight' : 'noHighlight'} onClick={() => handleClick('new')}>New</a></li>    
-                    <li><a className={activeFilter === 'top' ? 'highlight' : 'noHighlight'} onClick={() => handleClick('top')}>Top</a></li>               
+                    <li className={activeFilter === 'hot' ? 'highlight' : 'noHighlight'} onClick={() => handleClick('hot')}>Hot</li>
+                    <li className={activeFilter === 'new' ? 'highlight' : 'noHighlight'} onClick={() => handleClick('new')}>New</li>    
+                    <li className={activeFilter === 'top' ? 'highlight' : 'noHighlight'} onClick={() => handleClick('top')}>Top</li>               
                 </ul>
             </div>
         </div>

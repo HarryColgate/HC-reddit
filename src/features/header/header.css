@@ -8,15 +8,6 @@
     margin: 1em 0 2em ;
 }
 
-.header a {
-    text-decoration: none;
-    cursor:pointer;
-}
-
-.header a:hover {
-    color: #FF5700;
-}
-
 .highlight {
     color: #FF5700;
     border-bottom: #FF5700 solid 1px;
@@ -33,7 +24,12 @@
 }
 
 .header-content li{
-    padding-right: 15px;
+    cursor:pointer;
+    margin-right: 15px;
+}
+
+.header-content li:hover{
+    color: #FF5700;
 }
 
 @media (max-width: 800px) {
