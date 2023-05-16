@@ -62,7 +62,7 @@ i:hover {
         width: 100%;
         background-color: #f4f5fa;
         align-items: center;
-        align-content: start;
+        align-content: flex-start;
         margin: 0;
     }
 

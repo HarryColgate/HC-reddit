@@ -15,11 +15,11 @@ export default function Posts() {
 
     useEffect(() => {
         dispatch(fetchFeed({selectedSubreddit, filter}))
-    }, [selectedSubreddit, filter]);
+    }, [selectedSubreddit, filter, dispatch]);
 
     useEffect(() => {
         dispatch(fetchComments(selectedPost))
-    }, [selectedPost]);
+    }, [selectedPost, dispatch]);
 
     const expandPost = (postNum, commentLink) => {
         if (activeArray[postNum]) {
@@ -66,8 +66,7 @@ export default function Posts() {
                                 <i className="fas fa-caret-down"></i>
                             </div>
                             <div className="media">
-                                {post.post_hint === 'image' ? <img className="redditImage" src={post.url}/> : null}
-                                {post.post_hint === 'video' ? <img className="redditVideo" src={post.url} /> : null}
+                                {post.post_hint === 'image' ? <img className="redditImage" alt="thumbnail" src={post.url}/> : null}
                             </div>
                             <div className="content">
                                 <p className="postInfo">submitted to <span>r/{post.subreddit}</span> by <span>u/{post.author}</span></p>
@@ -83,7 +82,7 @@ export default function Posts() {
                                 <p>{post.selftext}</p>
                             </div>
                             <div className={post.post_hint === 'image' || post.post_hint === 'video' ? "expandedMediaContainer" : "donotshow"}>
-                                {post.post_hint === 'image' ? <img className="expandedImage expandedMedia" src={post.url}/> : null}
+                                {post.post_hint === 'image' ? <img className="expandedImage expandedMedia" alt="enlarged media" src={post.url}/> : null}
                             </div>
                             {/*using object value in system called hidden that is always default false*/}
                             <div className="expandedComments" style={comments.length < 1 ? {display: "none"} : null}>

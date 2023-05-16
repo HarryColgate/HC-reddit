@@ -32,7 +32,7 @@ export default function Sidenav() {
     return(
         <div className="sidenav">
             <div className='sidenav-logo' >
-                <img src="https://www.redditinc.com/assets/images/site/reddit-logo.png" />
+                <img src="https://www.redditinc.com/assets/images/site/reddit-logo.png" alt="reddit logo"/>
             </div>
             <div className='sidenav-search' >
                 <input type="text" name="search" placeholder="Search subreddits" onChange={handleChange} />
